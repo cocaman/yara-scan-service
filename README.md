@@ -40,3 +40,6 @@ Each Yara scan task has a JSON file as a result, which includes all the file hit
     "tags": []
 }
 ```
+
+## Support ##
+Feel free to use [Buy Me A Coffee](https://www.buymeacoffee.com/corsin) to, well, pay me a coffee and say thank you :-)
