@@ -12,7 +12,22 @@ https://riskmitigation.ch/yara-scan/
 ## API Key ##
 Please reach out to me if you are interested in getting an API key for easier submission of Yara rules
 
-## Results ##
+## Usage ##
+```
+$ python3 yara_scan_upload.py -h
+usage: yara_scan_upload.py [-h] -f FILE [FILE ...] [-a apikey]
+
+Upload a Yara rule to be scanned on Yara Scan Service
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILE [FILE ...], --file FILE [FILE ...]
+                        Yara to upload (required)
+  -a apikey, --apikey apikey
+                        Your personal API key
+```
+
+### Results ###
 Each Yara scan task has a JSON file as a result, which includes all the file hits and some additional information, like file type, links to MalwareBazaar and VirusTotal
 ```
 {
