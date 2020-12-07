@@ -12,7 +12,7 @@ https://riskmitigation.ch/yara-scan/
 ## API Key ##
 Please reach out to me if you are interested in getting an API key for easier submission of Yara rules
 
-## Usage ##
+### Usage ###
 ```
 $ python3 yara_scan_upload.py -h
 usage: yara_scan_upload.py [-h] -f FILE [FILE ...] [-a apikey]
