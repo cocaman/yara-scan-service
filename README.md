@@ -4,7 +4,7 @@
 Repository for scripts and tips for my "Yara Scan Service"
 
 The service is currently in **beta** phase and allows any user to upload a Yara rule, have it scanned against sorted collection of malicious files (mostly based on MalwareBazaar).
-> Did it happen to you that you wanted to quickly test a Yara rule your created, but you are missing a large enough data set to test your rule against? This is exactly where Yara Scan is designed for. You submit your Yara rule to the service and a short while later you will receive an email with the results of Yara scan over our large collection of malicious samples. And the best part? Most files are identified by a signature, making it easier to identify if your rule matches for the right malware samples.
+> Did it happen to you that you wanted to quickly test a Yara rule you created, but you are missing a large enough data set to test your rule against? This is exactly what Yara Scan is designed for. You submit your Yara rule to the service and a short while later you will receive an email with the results of Yara scan over our large collection of malicious samples. And the best part? Most files are identified by a signature, making it easier to identify if your rule matches for the right malware samples.
 
 ## Give it a try ##
 https://riskmitigation.ch/yara-scan/
