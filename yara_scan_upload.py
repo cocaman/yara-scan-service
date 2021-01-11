@@ -9,12 +9,20 @@ __license__     = "Creative Commons Attribution-ShareAlike 4.0 International Lic
 __version__     = "1.0"
 __email__       = "cocaman@gmail.com"
 
-# Set your API key here if you do not want to use it the CLI (recommended)
+# Please put your API key in apikey.json if you do not want to use it the CLI (recommended)
 API_KEY = ""
+try:
+    with open('apikey.json') as f:
+        array = json.load(f)
+        API_KEY = array['apikey']
+        #print(f"API key found: {API_KEY}")
+except IOError:
+    pass
+
 
 parser = argparse.ArgumentParser(description='Upload a Yara rule to be scanned on Yara Scan Service')
 parser.add_argument('-f', '--file', help='Yara to upload (required)', type=str, metavar="FILE", required=True, nargs=argparse.ONE_OR_MORE)
-parser.add_argument('-a', '--apikey', help='Your personal API key', type=str, metavar="apikey", required=False, default=API_KEY)
+parser.add_argument('-a', '--apikey', help='Your personal API key (Storage in apikey.json is recommended)', type=str, metavar="apikey", required=False, default=API_KEY)
 parser.add_argument('-d', '--daily', help='Run this rule daily', dest="daily", required=False, default=False, action='store_true')
 parser.set_defaults(feature=True)
 args = parser.parse_args()
