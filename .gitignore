@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 apikey.json
+*.json
+*.yar
+*.yara
