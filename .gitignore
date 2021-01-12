@@ -132,3 +132,5 @@ apikey.json
 *.json
 *.yar
 *.yara
+
+samples/
