@@ -26,6 +26,8 @@ optional arguments:
                         Your personal API key (Storage in apikey.json is
                         recommended)
   -d, --daily           Run this rule daily
+  -w, --weekly          Run this rule weekly
+
 ```
 
 ## Results ##
