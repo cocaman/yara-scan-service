@@ -134,3 +134,4 @@ apikey.json
 *.yara
 
 samples/
+yara_scan_upload.log
