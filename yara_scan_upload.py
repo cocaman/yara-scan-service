@@ -2,6 +2,10 @@
 import requests
 import argparse
 import json
+import re
+import os
+import sys
+import time
 
 __author__      = "Corsin Camichel"
 __copyright__   = "Copyright 2020, Corsin Camichel"
@@ -9,7 +13,9 @@ __license__     = "Creative Commons Attribution-ShareAlike 4.0 International Lic
 __version__     = "1.0"
 __email__       = "cocaman@gmail.com"
 
-# Please put your API key in apikey.json if you do not want to use it the CLI (recommended)
+logfile = 'yara_scan_upload.log'
+
+# Please put your API key in apikey.json if you do not want to use it in the CLI (recommended)
 API_KEY = ""
 try:
     with open('apikey.json') as f:
@@ -19,6 +25,17 @@ try:
 except IOError:
     pass
 
+try:
+    logf = open(logfile, 'a')
+except:
+    print(f'Can not open logfile for apending: {logfile}' )
+    sys.exit()
+
+def log(text):
+    now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
+    logf.write(f'{now} {text}\n')
+    #print(text)
 
 parser = argparse.ArgumentParser(description='Upload a Yara rule to be scanned on Yara Scan Service')
 parser.add_argument('-f', '--file', help='Yara to upload (required)', type=str, metavar="FILE", required=True, nargs=argparse.ONE_OR_MORE)
@@ -32,8 +49,18 @@ headers = {'APIKEY': args.apikey}
 data = {}
 
 files = []
+# append filenames of yara rules as identifier to URL to tell them apart
+identifier = ''
+print(args.file)
+import sys
+sys.exit()
 for f in args.file:
     files.append(('file[]', open(f,'rb')))
+    fname = os.path.basename(f)
+    identifier += fname + '__'
+
+file_list = identifier[:-2]
+identifier = re.sub(r'\W', '_', file_list)
 
 if(args.daily):
     data = {"daily" : "true"}
@@ -46,4 +73,6 @@ status = json_data['status']
 
 print(f"Yara Scan status: {status}")
 if(status == "ok"):
-    print(f"The scan is running, you will receive an email with the results or you can download the results file from here: https://riskmitigation.ch/yara-scan/results/{json_data['id']}/")
+    print(f"The scan is running, you will receive an email with the results or you can download the results file from here: https://riskmitigation.ch/yara-scan/results/{json_data['id']}/#{identifier}")
+    log(f"https://riskmitigation.ch/yara-scan/results/{json_data['id']}/#{identifier} {file_list}")
+    print(f'logged to {logfile}')
