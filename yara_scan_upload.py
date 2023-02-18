@@ -38,7 +38,7 @@ def log(text):
     #print(text)
 
 parser = argparse.ArgumentParser(description='Upload a Yara rule to be scanned on Yara Scan Service')
-parser.add_argument('-f', '--file', help='Yara to upload (required)', type=str, metavar="FILE", required=True, nargs=argparse.ONE_OR_MORE)
+parser.add_argument('-f', '--file', help='Yara rule to upload (required)', type=str, metavar="YARA-FILE", required=True, nargs=argparse.ONE_OR_MORE)
 parser.add_argument('-a', '--apikey', help='Your personal API key (Storage in apikey.json is recommended)', type=str, metavar="apikey", required=False, default=API_KEY)
 parser.add_argument('-d', '--daily', help='Run this rule now and every daily', dest="daily", required=False, default=False, action='store_true')
 parser.add_argument('-w', '--weekly', help='Run this rule now and once per week (Sunday)', dest="weekly", required=False, default=False, action='store_true')
@@ -52,8 +52,7 @@ files = []
 # append filenames of yara rules as identifier to URL to tell them apart
 identifier = ''
 print(args.file)
-import sys
-sys.exit()
+
 for f in args.file:
     files.append(('file[]', open(f,'rb')))
     fname = os.path.basename(f)
