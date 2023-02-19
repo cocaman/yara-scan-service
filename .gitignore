@@ -135,3 +135,4 @@ apikey.json
 
 samples/
 yara_scan_upload.log
+*.swp

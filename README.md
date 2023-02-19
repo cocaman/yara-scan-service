@@ -32,7 +32,7 @@ optional arguments:
 
 ## Results ##
 Each Yara scan task has a JSON file as a result, which includes all the file hits and some additional information, like file type, links to MalwareBazaar and VirusTotal
-```
+```json
 {
     "rule": "injectable_dll_x64",
     "malware": "CobaltStrike",
